@@ -32,6 +32,8 @@ module Slack
 
           ws.on :close do |event|
             ws = nil
+            # ソケットが切れたら終了処理を入れる（再起動はsupervisor側で）
+            exit(0)
           end
         end
       end
